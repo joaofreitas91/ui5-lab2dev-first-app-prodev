@@ -19,6 +19,8 @@
                     title="{products>ProductName}"
                     number="{products>UnitPrice}"
                     numberUnit="USD"
+                    type="Active"
+                    press="onPress"
                 >
                     <firstStatus>
                         <ObjectStatus
