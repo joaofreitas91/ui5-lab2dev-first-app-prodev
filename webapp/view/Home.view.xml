@@ -8,8 +8,20 @@
         id="page"
         title="{i18n>title}"
     >
+        <subHeader>
+            <Toolbar>
+                <SearchField
+                    id="searchField"
+                    liveChange="onSearch"
+                    width="100%"
+                    placeholder="{i18n>searchPlaceholder}"
+                />
+            </Toolbar>
+        </subHeader>
+
         <content>
             <List
+                id="list"
                 headerText="{i18n>products}"
                 headerLevel="H2"
                 items="{products>/}"
