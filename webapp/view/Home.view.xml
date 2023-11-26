@@ -1,14 +1,33 @@
-<mvc:View controllerName="com.lab2dev.firstapp.controller.Home"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
+<mvc:View
+    controllerName="com.lab2dev.firstapp.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
         <content>
-            <List headerText="Produtos" headerLevel="H2" items="{products>/}" >
-                <StandardListItem 
-                    type="Active" 
-                    press="onPress" 
-                    title="{products>title}" 
-                    counter="{products>counter}" />
+            <List
+                headerText="Produtos"
+                headerLevel="H2"
+                items="{products>/}"
+            >
+                <ObjectListItem
+                    title="{products>ProductName}"
+                    number="{products>UnitPrice}"
+                    numberUnit="USD"
+                >
+                    <firstStatus>
+                        <ObjectStatus
+                            text="{products>Discontinued}"
+                            state="Success"
+                        />
+                    </firstStatus>
+                    <ObjectAttribute text="{products>UnitsInStock} in Stock" />
+                    <ObjectAttribute text="{products>QuantityPerUnit}" />
+                </ObjectListItem>
             </List>
         </content>
     </Page>

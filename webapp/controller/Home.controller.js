@@ -1,36 +1,33 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/m/MessageBox",
-    "sap/ui/model/json/JSONModel"
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/model/odata/v2/ODataModel",
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, MessageBox, JSONModel) {
+    function (Controller, MessageBox, JSONModel, ODataModel) {
         "use strict";
 
         return Controller.extend("com.lab2dev.firstapp.controller.Home", {
             onInit: function () {
-                //Simulando uma lista de produtos
-                const products = [
-                    { title: "Arroz", counter: 5 },
-                    { title: "Feijão", counter: 8 },
-                    { title: "Macarrão", counter: 10 },
-                    { title: "Óleo de Cozinha", counter: 3 },
-                    { title: "Leite", counter: 7 },
-                    { title: "Café", counter: 4 },
-                    { title: "Açúcar", counter: 6 },
-                    { title: "Sal", counter: 2 },
-                    { title: "Farinha de Trigo", counter: 9 },
-                    { title: "Sabonete", counter: 11 }
-                ];
+                const oDataModel = new ODataModel("/northwind/northwind.svc/");
 
-                // Cria um modelo JSON com os produtos (JSONModel)
-                const oModel = new JSONModel(products);
+                oDataModel.read("/Products", {
+                    success: (oProducts) => {
+                        console.log(oProducts);
+                        const products = oProducts.results;
 
-                // Define o modelo com o nome "products" e fazendo a ligação com a view (Aggregation Binding)
-                this.getView().setModel(oModel, "products");
+                        console.log(products);
 
+                        const oModel = new JSONModel(products);
+                        this.getView().setModel(oModel, 'products');
+                    },
+                    error: (oError) => {
+                        MessageBox.error("Erro ao carregar os dados");
+                    }
+                });
             },
 
             onPress: function (oEvent) {
