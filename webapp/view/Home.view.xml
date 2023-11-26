@@ -10,9 +10,8 @@
     >
         <content>
             <List
-                headerText="Produtos"
+                headerText="{i18n>products}"
                 headerLevel="H2"
-                busyIndicatorDelay="0"
                 items="{products>/}"
             >
                 <ObjectListItem
