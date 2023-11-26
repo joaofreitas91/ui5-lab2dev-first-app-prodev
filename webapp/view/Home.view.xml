@@ -26,7 +26,11 @@
                             state="Success"
                         />
                     </firstStatus>
+
+                    <ObjectAttribute text="{products>Category/CategoryName}" />
+
                     <ObjectAttribute text="{products>UnitsInStock} in Stock" />
+
                     <ObjectAttribute text="{products>QuantityPerUnit}" />
                 </ObjectListItem>
             </List>

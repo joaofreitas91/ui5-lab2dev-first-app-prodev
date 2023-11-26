@@ -11,6 +11,12 @@ sap.ui.define([
 
         return Controller.extend("com.lab2dev.firstapp.controller.Home", {
             onInit: function () {
+                const params = {
+                    urlParameters: {
+                        $expand: "Category"
+                    }
+                };
+
                 const products = models.getProducts(params);
 
                 products.then((oProductsModel) => {

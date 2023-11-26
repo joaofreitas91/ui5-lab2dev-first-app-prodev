@@ -34,13 +34,14 @@ sap.ui.define([
                 });
             },
 
-            getProducts: function () {
+            getProducts: function (oURLParam) {
                 var oDataModel = this.getODataModel();
 
                 return new Promise((resolve, reject) => {
                     oDataModel
                         .then((oModel) => {
                             oModel.read("/Products", {
+                                ...oURLParam,
                                 success: (oData) => {
                                     resolve(new JSONModel(oData.results));
                                 },
