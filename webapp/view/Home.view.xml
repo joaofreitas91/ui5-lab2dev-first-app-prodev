@@ -12,6 +12,7 @@
             <List
                 headerText="Produtos"
                 headerLevel="H2"
+                busyIndicatorDelay="0"
                 items="{products>/}"
             >
                 <ObjectListItem

@@ -1,32 +1,24 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/m/MessageBox",
-    "sap/ui/model/json/JSONModel",
-    "sap/ui/model/odata/v2/ODataModel",
+    "com/lab2dev/firstapp/model/models"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, MessageBox, JSONModel, ODataModel) {
+    function (Controller, MessageBox, models) {
         "use strict";
 
         return Controller.extend("com.lab2dev.firstapp.controller.Home", {
             onInit: function () {
-                const oDataModel = new ODataModel("/northwind/northwind.svc/");
+                const products = models.getProducts(params);
 
-                oDataModel.read("/Products", {
-                    success: (oProducts) => {
-                        console.log(oProducts);
-                        const products = oProducts.results;
+                products.then((oProductsModel) => {
+                    this.getView().setModel(oProductsModel, 'products');
 
-                        console.log(products);
+                }).catch((oError) => {
+                    MessageBox.error(oError);
 
-                        const oModel = new JSONModel(products);
-                        this.getView().setModel(oModel, 'products');
-                    },
-                    error: (oError) => {
-                        MessageBox.error("Erro ao carregar os dados");
-                    }
                 });
             },
 
