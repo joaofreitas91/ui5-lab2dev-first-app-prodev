@@ -21,13 +21,14 @@ sap.ui.define([
 
                 const products = models.getProducts(params);
 
-                products.then((oProductsModel) => {
-                    this.getView().setModel(oProductsModel, 'products');
+                products
+                    .then((oProductsModel) => {
+                        this.getView().setModel(oProductsModel, 'products');
 
-                }).catch((oError) => {
-                    MessageBox.error(oError);
+                    }).catch((oError) => {
+                        MessageBox.error(oError);
 
-                });
+                    });
             },
 
             onPress: function (oEvent) {
@@ -63,6 +64,30 @@ sap.ui.define([
                 const oList = this.byId("list");
                 const oBinding = oList.getBinding("items");
                 oBinding.filter(aFilters);
+            },
+
+            onSearchOData: function (oEvent) {
+                const sQuery = oEvent.getSource().getValue();
+
+                const params = {
+                    urlParameters: {
+                        $expand: "Category"
+                    },
+                    filters: [
+                        new Filter("ProductName", FilterOperator.Contains, sQuery)
+                    ]
+                };
+
+                const products = models.getProducts(params);
+
+                products
+                    .then((oProductsModel) => {
+                        this.getView().setModel(oProductsModel, 'products');
+
+                    }).catch((oError) => {
+                        MessageBox.error(oError);
+
+                    });
             },
         });
     });

@@ -13,8 +13,14 @@
                 <SearchField
                     id="searchField"
                     liveChange="onSearch"
-                    width="100%"
+                    width="50%"
                     placeholder="{i18n>searchPlaceholder}"
+                />
+                <SearchField
+                    id="searchFieldOData"
+                    search="onSearchOData"
+                    width="50%"
+                    placeholder="{i18n>searchPlaceholderOdata}"
                 />
             </Toolbar>
         </subHeader>
