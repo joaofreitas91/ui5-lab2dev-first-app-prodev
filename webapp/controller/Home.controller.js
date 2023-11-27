@@ -21,13 +21,21 @@ sap.ui.define([
 
                 const products = models.getProducts(params);
 
+                const list = this.byId("list");
+
+                list.setBusy(true);
+
                 products
                     .then((oProductsModel) => {
                         this.getView().setModel(oProductsModel, 'products');
 
-                    }).catch((oError) => {
+                    })
+                    .catch((oError) => {
                         MessageBox.error(oError);
 
+                    })
+                    .finally(() => {
+                        list.setBusy(false);
                     });
             },
 
@@ -80,13 +88,21 @@ sap.ui.define([
 
                 const products = models.getProducts(params);
 
+                const list = this.byId("list");
+
+                list.setBusy(true);
+
                 products
                     .then((oProductsModel) => {
                         this.getView().setModel(oProductsModel, 'products');
 
-                    }).catch((oError) => {
+                    })
+                    .catch((oError) => {
                         MessageBox.error(oError);
 
+                    })
+                    .finally(() => {
+                        list.setBusy(false);
                     });
             },
         });

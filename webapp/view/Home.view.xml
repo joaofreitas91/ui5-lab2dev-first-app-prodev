@@ -30,7 +30,14 @@
                 id="list"
                 headerText="{i18n>products}"
                 headerLevel="H2"
-                items="{products>/}"
+                items="{
+                    path: 'products>/', 
+                    sorter: {
+                        path: 'Category/CategoryName',
+                        group: true,
+                        descending: false
+                    }
+                }"
             >
                 <ObjectListItem
                     title="{products>ProductName}"
