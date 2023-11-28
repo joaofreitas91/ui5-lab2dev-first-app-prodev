@@ -45,6 +45,7 @@
                         formatter: '.formatter.toUpperCase'
                     }"
                     number="{products>UnitPrice}"
+                    numberState="{= ${products>UnitPrice} > 15 ? 'Error' : 'Success' }"
                     numberUnit="USD"
                     type="Active"
                     press="onPress"
