@@ -3,15 +3,18 @@ sap.ui.define([
     "sap/m/MessageBox",
     "com/lab2dev/firstapp/model/models",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
+    "sap/ui/model/FilterOperator",
+    "com/lab2dev/firstapp/model/formatter"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, MessageBox, models, Filter, FilterOperator) {
+    function (Controller, MessageBox, models, Filter, FilterOperator, formatter) {
         "use strict";
 
         return Controller.extend("com.lab2dev.firstapp.controller.Home", {
+            formatter: formatter,
+
             onInit: function () {
                 const params = {
                     urlParameters: {
