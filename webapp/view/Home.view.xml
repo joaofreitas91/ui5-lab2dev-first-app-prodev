@@ -22,6 +22,14 @@
                     width="50%"
                     placeholder="{i18n>searchPlaceholderOdata}"
                 />
+                <ToolbarSeparator />
+                <Button
+                    id="helloDialogButton"
+                    icon="sap-icon://hello-world"
+                    text="Open Dialog"
+                    type="Success"
+                    press="onOpenDialog"
+                />
             </Toolbar>
         </subHeader>
 

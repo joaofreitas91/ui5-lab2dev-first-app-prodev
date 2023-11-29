@@ -108,5 +108,20 @@ sap.ui.define([
                         list.setBusy(false);
                     });
             },
+
+            onOpenDialog: function () {
+                const viewId = this.getView().getId();
+
+                if (!this.dialog) {
+                    this.dialog = sap.ui.xmlfragment(viewId, "com.lab2dev.firstapp.view.fragments.Dialog", this);
+                    this.getView().addDependent(this.dialog);
+                }
+
+                this.dialog.open();
+            },
+
+            oncloseDialog: function () {
+                this.dialog.close();
+            }
         });
     });
