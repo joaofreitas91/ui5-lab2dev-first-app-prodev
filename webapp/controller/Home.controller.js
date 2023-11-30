@@ -43,22 +43,14 @@ sap.ui.define([
             },
 
             onPress: function (oEvent) {
+                //Acesso ao Component
+                const oComponent = this.getOwnerComponent()
 
-                // Origem do evento
-                const item = oEvent.getSource();
+                //Acesso ao Router
+                const oRouter = oComponent.getRouter();
 
-                // Título do item
-                const itemTitle = item.getTitle();
-
-                const i18n = this.getOwnerComponent().getModel("i18n").getResourceBundle();
-
-                // Mensagem a ser exibida
-                const message = i18n.getText("itemClicked", [itemTitle])
-
-                // Exibe uma mensagem na tela
-                MessageBox.information(message, {
-                    title: "Informação do item"
-                });
+                //Navegação para a rota RouteDetail
+                oRouter.navTo("RouteDetail");
             },
 
             onSearch: function (oEvent) {
