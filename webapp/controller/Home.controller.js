@@ -1,5 +1,5 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
+    "com/lab2dev/firstapp/controller/BaseController",
     "sap/m/MessageBox",
     "com/lab2dev/firstapp/model/models",
     "sap/ui/model/Filter",
@@ -41,7 +41,6 @@ sap.ui.define([
                         list.setBusy(false);
                     });
             },
-
             onPress: function (oEvent) {
                 //Origem do evento, item da lista
                 const source = oEvent.getSource();
@@ -58,14 +57,8 @@ sap.ui.define([
                 //Acesso ao ID do produto
                 const productId = product.ProductID;
 
-                //Acesso ao Component
-                const oComponent = this.getOwnerComponent();
-
-                //Acesso ao Router
-                const oRouter = oComponent.getRouter();
-
                 //Navegação para a rota RouteDetail
-                oRouter.navTo("RouteDetail", {
+                this.navTo("RouteDetail", {
                     productId: productId
                 });
             },

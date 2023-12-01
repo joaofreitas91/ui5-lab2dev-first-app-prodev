@@ -1,5 +1,5 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
+    "com/lab2dev/firstapp/controller/BaseController",
     "sap/ui/core/routing/History",
     "sap/ui/model/json/JSONModel"
 ],
@@ -41,9 +41,7 @@ sap.ui.define([
                     window.history.go(-1);
 
                 } else {
-                    const oComponent = this.getOwnerComponent()
-                    const oRouter = oComponent.getRouter();
-                    oRouter.navTo("RouteHome", {}, true);
+                    this.navTo("RouteHome");
                 }
             }
         });
