@@ -43,14 +43,31 @@ sap.ui.define([
             },
 
             onPress: function (oEvent) {
+                //Origem do evento, item da lista
+                const source = oEvent.getSource();
+
+                //Contexto do item da lista, o nome do model
+                const context = source.getBindingContext('products');
+
+                //Index do item da lista
+                const path = context.getPath();
+
+                //Acesso ao objeto do item da lista pelo path
+                const product = context.getObject(path);
+
+                //Acesso ao ID do produto
+                const productId = product.ProductID;
+
                 //Acesso ao Component
-                const oComponent = this.getOwnerComponent()
+                const oComponent = this.getOwnerComponent();
 
                 //Acesso ao Router
                 const oRouter = oComponent.getRouter();
 
                 //Navegação para a rota RouteDetail
-                oRouter.navTo("RouteDetail");
+                oRouter.navTo("RouteDetail", {
+                    productId: productId
+                });
             },
 
             onSearch: function (oEvent) {

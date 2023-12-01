@@ -106,7 +106,7 @@
         },
         {
           "name": "RouteDetail",
-          "pattern": "detail",
+          "pattern": "detail/{productId}",
           "target": [
             "TargetDetail"
           ]
